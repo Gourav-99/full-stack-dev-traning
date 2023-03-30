@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Flexbox</title>
+    <style>
+        div.parent {
+            width: 800px;
+            height: 500px;
+            background-color: aqua;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            /* change from center */
+            align-items: flex-start;
+            /* change from center */
+            align-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        div.child {
+            width: 200px;
+            height: 50px;
+            background-color: yellow;
+            margin: 10px;
+            /* remove margin */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+
+</html>
