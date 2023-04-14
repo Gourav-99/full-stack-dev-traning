@@ -15,6 +15,9 @@ const showList = () => {
     checkbox.className = "checkbox";
     label.innerHTML = `${ele.text}`;
     removeBtn.innerHTML = "remove";
+    if (checkbox.checked) {
+      checkbox.classList.add("completed");
+    }
     listEle.appendChild(checkbox);
     listEle.appendChild(label);
     listEle.appendChild(removeBtn);
@@ -27,12 +30,13 @@ const showList = () => {
     });
     checkbox.addEventListener("click", (e) => {
       const check = e.target;
-      if (check.checkbox === true) {
-        check.checkbox = false;
-        check.classList.remove("completed");
-      } else {
-        check.checkbox = true;
+      const id = ele.id;
+      const checkEle = todos.find((todo) => todo.id === id);
+      checkEle.completed = check.checked;
+      if (check.checked) {
         check.classList.add("completed");
+      } else {
+        check.classList.remove("completed");
       }
     });
   });
