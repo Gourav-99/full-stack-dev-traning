@@ -42,7 +42,7 @@ const showList = () => {
   });
 };
 addBtn.addEventListener("click", () => {
-  if (inputEle.value != null && inputEle.value != " ") {
+  if (inputEle.value.trim() !== "") {
     console.log("yes");
     todos.push({
       text: inputEle.value,
