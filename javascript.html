@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <title>javascript pactice</title>
+  </head>
+  <body>
+    <script>
+      //   const a = 10;
+      //   console.log(a);
+      //   console.log(window);
+      //   //   window.alert("hello");
+      //   window.scrollTo(0, 500);
+      // function greet(time) {
+      //   console.log("hello" + time);
+      // }
+      // greet("6pm");
+      // const a = [1, 2, 3, 4];
+      // const b = a;
+
+      // console.log("a:", a);
+      // console.log("b:", b);
+      // const a = [
+      //   "a",
+      //   "b",
+      //   "c",
+      //   "d",
+      //   "e",
+      //   "f",
+      //   "g",
+      //   "h",
+      //   "i",
+      //   "j",
+      //   "k",
+      //   "l",
+      //   "m",
+      //   "n",
+      //   "o",
+      //   "p",
+      //   "q",
+      //   "r",
+      //   "s",
+      //   "t",
+      //   "u",
+      //   "v",
+      //   "w",
+      //   "x",
+      //   "y",
+      //   "z",
+      // ];
+      // function iterate(currentValue, currentIndex) {
+      //   return currentValue;
+      // }
+      // // a.forEach(iterate);
+      // const newArray = a.map(iterate);
+      // console.log(newArray);
+      // greet("John");
+      // greet2("John");
+      // function greet(Name) {
+      //   console.log("Hello " + Name);
+      // }
+
+      // const greet2 = function (Name) {
+      //   console.log("Hello " + Name);
+      // };
+
+      // function greet(Name = "default") {
+      //   console.log("Hello " + Name);
+      // }
+      // greet();
+
+      // const greet = (name) => {
+      //   console.log("hi" + name);
+      // };
+      // greet();
+
+      // const arr = [1, 2, 3, 4, 5];
+
+      // function callback(item) {
+      //   return item * 2;
+      // }
+      // const newArr = arr.map(callback);
+
+      // const arr2 = arr.map((item) => item * 2);
+      // console.log(arr2);
+
+      // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+      // function cb(element) {
+      //   if (element % 2 == 0) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // }
+      // const evenArr = arr.filter(cb);
+
+      // const newArr = arr.filter((element) => element % 2 === 0);
+
+      // console.log(newArr);
+
+      // function cb(element) {
+      //       if (element === 99) return element
+      //   }
+      // const newArr = arr.find((element) => element === 99);
+
+      // const greet = function () {
+      //   console.log(this);
+      // };
+
+      // const greeArrow = () => {
+      //   console.log(this);
+      // };
+
+      // const ob = {
+      //   name: "Rahul",
+      //   greet: function () {
+      //     console.log(this);
+      //   },
+      // };
+      // ob.greet();
+
+      // const ob = {
+      //   name: "Rahul",
+      //   greet: () => {
+      //     console.log(this);
+      //   },
+      // };
+      // ob.greet();
+      // const name = "gourav";
+      // const age = 19;
+      // console.log(`hello this is ${name} aged ${age}`);
+
+      // spread operator
+      // const a = [1, 2, 3, 4];
+      // const b = [5, 6, 7, 8];
+      // const c = [...a, ...b];
+      // console.log(c);
+      // const d = {
+      //   name: "gourav",
+      //   age: 30,
+      // };
+      // const e = { ...d };
+      // console.log(e);
+      const a = {
+        name: "John",
+        age: 30,
+        car: {
+          brand: "BMW",
+          model: "X5",
+        },
+      };
+
+      const b = {
+        ...a,
+      };
+
+      a.name = "Jack";
+      a.age = 18;
+      a.car.brand = "Mercedes";
+      a.car.model = "C300D";
+
+      console.log(b);
+      Object.keys(a).forEach((key) => {
+        console.log(key);
+      });
+      // const a = {
+      //   name: "John",
+      //   age: 30,
+      //   car: {
+      //     brand: "BMW",
+      //     model: "X5",
+      //   },
+      // };
+
+      // const name = a['name']
+      // const age = a.age
+      // const car = a.car
+      const { name, age, car } = a;
+
+      console.log(name, car, age);
+
+      const greet = (...rest) => {
+        console.log(rest);
+        // console.log(`Hello ${name} you are ${age} years old and it is ${time} o'clock`)
+      };
+
+      greet("John", 30, 12);
+    </script>
+  </body>
+</html>
