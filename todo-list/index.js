@@ -15,6 +15,9 @@ const createListItem = (ele) => {
   checkbox.className = "checkbox";
   label.innerHTML = `${ele.text}`;
   removeBtn.innerHTML = "remove";
+  if (ele.completed) {
+    checkbox.classList.toggle("completed");
+  }
 
   listEle.appendChild(checkbox);
   listEle.appendChild(label);
