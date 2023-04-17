@@ -11,6 +11,9 @@ const showList = () => {
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     let label = document.createElement("label");
+    let editBtn = document.createElement("span");
+    editBtn.className = "edit-btn";
+    editBtn.innerHTML = "edit";
     checkbox.checked = ele.completed;
     checkbox.className = "checkbox";
     label.innerHTML = `${ele.text}`;
@@ -20,6 +23,7 @@ const showList = () => {
     }
     listEle.appendChild(checkbox);
     listEle.appendChild(label);
+    listEle.appendChild(editBtn);
     listEle.appendChild(removeBtn);
     todoList.appendChild(listEle);
     removeBtn.addEventListener("click", (e) => {
@@ -39,17 +43,38 @@ const showList = () => {
         check.classList.remove("completed");
       }
     });
+    editBtn.addEventListener("click", (e) => {
+      const element = e.target;
+      let currentValue = element.previousElementSibling.innerHTML;
+      inputEle.value = currentValue;
+      const id = ele.id;
+      const checkEle = todos.findIndex((todo) => todo.id === id);
+      inputEle.addEventListener("input", (event) => {
+        let updatedValue = "";
+        updatedValue = event.target.value;
+        if (updatedValue.trim() !== "") {
+          todos[checkEle].text = updatedValue;
+        }
+      });
+    });
   });
 };
 addBtn.addEventListener("click", () => {
   if (inputEle.value.trim() !== "") {
-    console.log("yes");
-    todos.push({
-      text: inputEle.value,
-      completed: false,
-      id: Date.now(),
-    });
-    showList();
+    const existingTodoIndex = todos.findIndex(
+      (todo) => todo.text === inputEle.value.trim()
+    );
+    if (existingTodoIndex !== -1) {
+      showList();
+      return;
+    } else {
+      todos.push({
+        text: inputEle.value,
+        completed: false,
+        id: Date.now(),
+      });
+      showList();
+    }
   } else {
     alert("!Nothing added to the list. Please enter something");
   }

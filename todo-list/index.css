@@ -58,10 +58,12 @@
   display: inline-block;
   width: 200px;
 }
-.remove {
+.remove,
+.edit-btn {
   color: brown;
   text-decoration: underline;
   cursor: pointer;
+  margin-inline: 2px;
 }
 .completed + label {
   background-color: green;
