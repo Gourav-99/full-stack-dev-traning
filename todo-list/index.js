@@ -75,6 +75,7 @@ addBtn.addEventListener("click", () => {
       });
       showList();
     }
+    inputEle.value = "";
   } else {
     alert("!Nothing added to the list. Please enter something");
   }
