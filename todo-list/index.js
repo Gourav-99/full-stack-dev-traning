@@ -49,12 +49,13 @@ const showList = () => {
       inputEle.value = currentValue;
       const id = ele.id;
       const checkEle = todos.findIndex((todo) => todo.id === id);
-      inputEle.addEventListener("input", (event) => {
+      inputEle.addEventListener("input", function clickHandle(event) {
         let updatedValue = "";
         updatedValue = event.target.value;
         if (updatedValue.trim() !== "") {
           todos[checkEle].text = updatedValue;
         }
+        inputEle.removeEventListener("input", clickHandle);
       });
     });
   });
