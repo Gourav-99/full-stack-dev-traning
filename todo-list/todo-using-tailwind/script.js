@@ -8,7 +8,7 @@ let lastUpdated = new Date().toLocaleString();
 
 lastUpdatedContainer.innerHTML = lastUpdated;
 
-const listItem = (todo_text = "") => ` <div
+const listItemComplete = (todo_text = "") => ` <div
 id="task"
 class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent"
 >
@@ -71,7 +71,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
 </div>
 `;
 
-const listItemComplete = (todo_text = "") => `<div
+const listItem = (todo_text = "") => `<div
 id="task"
 class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150"
 >
@@ -135,7 +135,12 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
 `;
 
 const todos = [];
+const key = "todos";
+
 let idOfElementToEdit = null;
+const updateLocalStorage = (todos) => {
+  localStorage.setItem(key, JSON.stringify(todos));
+};
 const showEdit = (id) => {
   const element = todos.find((todo) => todo.id === id);
   input.value = element.text;
@@ -151,6 +156,7 @@ const addRemoveEventListener = (todoElement, ele) => {
     todos.splice(index, 1);
     listState.innerHTML =
       todos.length >= 1 ? `Hello, here are your latest` : `Empty List`;
+    updateLocalStorage(todos);
   });
 };
 
@@ -159,8 +165,8 @@ const addCompleteEventListener = (todoElement, ele) => {
   checkElement.addEventListener("click", () => {
     const updateElement = todos.find((todo) => todo.id === ele);
     updateElement.completed = !updateElement.completed;
-    console.log(todos);
     renderList();
+    updateLocalStorage(todos);
   });
 };
 
@@ -201,9 +207,9 @@ const handleAdd = (e) => {
       completed: false,
       id: Date.now(),
     });
+    updateLocalStorage(todos);
     input.value = "";
     renderList();
-    console.log(todos);
     return;
   } else {
     return window.alert("adding an empty item is not possible");
@@ -216,6 +222,16 @@ const handleEdit = (e) => {
   renderList();
   addbutton.classList.toggle("hidden");
   editButton.classList.toggle("hidden");
+  updateLocalStorage(todos);
+};
+const initilize = () => {
+  const savedTodos = localStorage.getItem(key);
+  const myTodos = JSON.parse(savedTodos);
+  if (myTodos) {
+    myTodos.forEach((item) => todos.push(item));
+    renderList();
+  }
 };
 addbutton.addEventListener("click", handleAdd);
 editButton.addEventListener("click", handleEdit);
+initilize();
