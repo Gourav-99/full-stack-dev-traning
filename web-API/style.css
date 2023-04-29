@@ -1,0 +1,15 @@
+body {
+  background-color: #fff;
+  color: #111;
+  height: 100vh;
+}
+
+body.dark {
+  background-color: #111;
+  color: #fff;
+}
+
+body.dark button {
+  background-color: blueviolet;
+  color: #fff;
+}
