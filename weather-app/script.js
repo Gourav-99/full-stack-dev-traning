@@ -124,6 +124,7 @@ const getWeatherByCords = async (lat, long) => {
 
 // fetch location cordinates
 const detectCords = () => {
+  console.log(navigator.geolocation);
   navigator.geolocation.getCurrentPosition((position) => {
     getWeatherByCords(position.coords.latitude, position.coords.longitude);
   });
@@ -133,7 +134,6 @@ const detectCords = () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputLocation = input.value;
-  locName = inputLocation;
   getWeatherByName(inputLocation);
 });
 
